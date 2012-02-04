@@ -4,4 +4,8 @@ ifeq ($(BR2_TARGET_OPENDINGUX_A320),y)
 include target/device/opendingux/a320/Makefile.in
 endif
 
+ifeq ($(BR2_TARGET_OPENDINGUX_RZX50),y)
+include target/device/opendingux/rzx50/Makefile.in
+endif
+
 endif

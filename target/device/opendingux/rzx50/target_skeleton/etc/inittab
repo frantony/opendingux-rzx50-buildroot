@@ -1,0 +1,78 @@
+# /etc/inittab
+#
+# Copyright (C) 2001 Erik Andersen <andersen@codepoet.org>
+#
+# Note: BusyBox init doesn't support runlevels.  The runlevels field is
+# completely ignored by BusyBox init. If you want runlevels, use
+# sysvinit.
+#
+# Format for each entry: <id>:<runlevels>:<action>:<process>
+#
+# id        == tty to run on, or empty for /dev/console
+# runlevels == ignored
+# action    == one of sysinit, respawn, askfirst, wait, and once
+# process   == program to run
+
+# Startup the system
+::sysinit:/bin/mount -t proc proc /proc
+::sysinit:/bin/mount -t sysfs sysfs /sys
+::sysinit:/bin/mount -o size=64k,mode=0755 -t tmpfs tmpfs /dev
+::sysinit:/bin/mkdir -p /dev/pts
+::sysinit:/bin/mount -o mode=0620 -t devpts devpts /dev/pts
+::sysinit:/bin/mount -t tmpfs tmpfs /tmp
+::sysinit:/bin/mount -o size=64k,mode=0755 -t tmpfs tmpfs /media
+::sysinit:/bin/mount -a
+::sysinit:/bin/mount -o remount,rw,noatime,nodiratime /boot
+::sysinit:/bin/echo -n 1 > /proc/sys/vm/overcommit_memory
+
+# Ethernet Gadget
+::sysinit:/bin/mkdir /media/nfs
+::sysinit:/sbin/insmod /usr/local/lib/modules/g_ether.ko
+
+# Serial Gadget
+#::sysinit:/sbin/insmod /usr/local/lib/modules/g_serial.ko
+#::ttyGS0::respawn:/sbin/getty -L ttyGS0 115200 vt100
+
+# File Storage Gadget
+# see http://www.linux-usb.org/gadget/file_storage.html
+# AN IMPORTANT WARNING! While File-backed Storage Gadget (FSG) is running
+# and the gadget is connected to a USB host, that USB host will use
+# the backing storage as a private disk drive. It will not expect to see
+# any changes in the backing storage other than the ones it makes.
+# Extraneous changes are liable to corrupt the filesystem and may even
+# crash the host. Only one system (normally, the USB host) may write
+# to the backing storage, and if one system is writing that data,
+# no other should be reading it. The only safe way to share the backing
+# storage between the host and the gadget's operating system
+# at the same time is to make it read-only on both sides.
+#::sysinit:/sbin/insmod /usr/local/lib/modules/g_file_storage.ko file=/dev/mmcblk0p4,/dev/mmcblk1p1 stall=0 removable=1
+
+# Logging junk
+::sysinit:/bin/touch /var/log/messages
+::respawn:/sbin/syslogd -n -m 0
+::respawn:/sbin/klogd -n
+
+::sysinit:/bin/hostname -F /etc/hostname
+
+# Start mdev
+::sysinit:/bin/echo /sbin/mdev > /proc/sys/kernel/hotplug
+::sysinit:/sbin/mdev -s
+
+# now run any rc scripts
+::sysinit:/etc/init.d/rcS start
+
+# Put a getty on the serial port
+ttyS1::respawn:/sbin/getty -L ttyS1 57600 vt100
+
+# Launch the main application
+tty1::respawn:/usr/sbin/frontend_start
+
+# Stuff to do for the 3-finger salute
+::ctrlaltdel:/sbin/reboot
+
+# Stuff to do before rebooting
+::shutdown:/etc/init.d/rcS stop
+null::shutdown:/usr/bin/killall klogd
+null::shutdown:/usr/bin/killall syslogd
+null::shutdown:/bin/umount -a -r
+null::shutdown:/sbin/swapoff -a

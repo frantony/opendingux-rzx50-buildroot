@@ -20,6 +20,12 @@ config BR2_TARGET_OPENDINGUX_A320
 	help
 	  OpenDingux on the Dingoo Digital A320 and Dingoo Technology A330.
 
+config BR2_TARGET_OPENDINGUX_RZX50
+	bool "Ritmix RZX50"
+	depends on BR2_mipsel && BR2_mips_32
+	help
+	  OpenDingux on the Ritmix RZX-50 portable game console.
+
 endchoice
 
 endif

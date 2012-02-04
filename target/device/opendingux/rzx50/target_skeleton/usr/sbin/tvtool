@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ "$1" = "--on" ]; then
+amixer set Speaker off
+if [ -f /etc/local/tvout.conf ]; then
+/usr/sbin/tvout --`cat /etc/local/tvout.conf`
+else
+/usr/sbin/tvout --pal
+fi
+elif [ "$1" = "--off" ]; then
+/usr/sbin/tvout --off
+amixer set Speaker on
+fi
