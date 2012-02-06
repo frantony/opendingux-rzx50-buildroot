@@ -1,0 +1,11 @@
+--- pwswd-master/Makefile	2012-01-29 17:41:32.000000000 +0400
++++ pwswd-master.patched/Makefile	2012-02-06 08:55:10.000000000 +0400
+@@ -18,7 +18,7 @@
+ CFLAGS:=-Wall -O2
+ INCLUDES:=
+ LDFLAGS:=-s
+-LIBS:=-lasound -lpng
++LIBS:=-lasound -lpng -lz
+ 
+ 
+ .PHONY: all clean

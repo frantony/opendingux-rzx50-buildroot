@@ -5,10 +5,10 @@
 #############################################################
 PWSWD_VERSION = master
 PWSWD_SITE = git://github.com/Ayla-/pwswd.git
-PWSWD_DEPENDENCIES = alsa-lib libpng
+PWSWD_DEPENDENCIES = alsa-lib libpng zlib
 
 define PWSWD_BUILD_CMDS
-	$(MAKE) CROSS_COMPILE="$(TARGET_CROSS)" -C $(@D)
+	$(MAKE) INCLUDES="-I$(STAGING_DIR)/usr/include" CFLAGS="$(TARGET_CFLAGS)" LDFLAGS="-L$(STAGING_DIR)/usr/lib $(TARGET_LDFLAGS)" CROSS_COMPILE="$(TARGET_CROSS)" -C $(@D)
 endef
 
 define PWSWD_INSTALL_TARGET_CMDS
