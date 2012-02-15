@@ -1,2 +1,3 @@
 menu "Dingux"
+source "package/dingux/hello/Config.in"
 endmenu
