@@ -1,0 +1,4 @@
+title=dng-comm
+description=no description
+exec=/usr/local/apps/dingux-commander/dingux-commander.dge
+icon=/usr/local/apps/dingux-commander/dingux-commander.png
