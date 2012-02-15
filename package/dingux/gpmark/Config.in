@@ -1,0 +1,5 @@
+config BR2_PACKAGE_GPMARK
+	bool "gpmark"
+	help
+	 no help
+

@@ -1,0 +1,15 @@
+diff --git a/main.h b/main.h
+index 257656d..7886742 100755
+--- a/main.h
++++ b/main.h
+@@ -7,8 +7,8 @@
+ //#define ProjectWiz
+ //#define ProjectGP2X
+ 
+-#define ScreenWidth 320 // Ширина
+-#define ScreenHeight 240 // Высота
++#define ScreenWidth 480 // Ширина
++#define ScreenHeight 272 // Высота
+ #define ScreenSize (ScreenWidth * ScreenHeight) // Размер экрана
+ 
+ #define pi 3.14151693

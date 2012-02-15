@@ -1,0 +1,4 @@
+title=gpmark
+description=
+exec=/usr/local/apps/gpmark/gpmark.dge
+icon=/usr/local/apps/gpmark/gpmark.png
