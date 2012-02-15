@@ -3,6 +3,9 @@ menu "Package Selection for the target"
 source "package/busybox/Config.in"
 source "package/customize/Config.in"
 
+# Dingux applications
+source "package/dingux/Config.in"
+
 # Audio and video applications
 source "package/multimedia/Config.in"
 

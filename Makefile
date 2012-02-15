@@ -276,6 +276,8 @@ TARGET_SKELETON=$(TOPDIR)/fs/skeleton
 
 BR2_DEPENDS_DIR=$(BUILD_DIR)/buildroot-config
 
+DINGUX_LOCAL_DIR=$(BASE_DIR)/dingux-local
+
 include toolchain/Makefile.in
 include package/Makefile.in
 
@@ -342,7 +344,8 @@ HOST_SOURCE += $(addsuffix -source,$(sort $(TARGETS_HOST_DEPS) $(HOST_DEPS)))
 $(TARGETS_ALL): __real_tgt_%: $(BASE_TARGETS) %
 
 dirs: $(DL_DIR) $(TOOLCHAIN_DIR) $(BUILD_DIR) $(STAGING_DIR) $(TARGET_DIR) \
-	$(HOST_DIR) $(BR2_DEPENDS_DIR) $(BINARIES_DIR) $(STAMP_DIR)
+	$(HOST_DIR) $(BR2_DEPENDS_DIR) $(BINARIES_DIR) $(STAMP_DIR) \
+	$(DINGUX_LOCAL_DIR)
 
 $(BASE_TARGETS): dirs
 
@@ -368,6 +371,16 @@ world: prepare dependencies dirs $(BASE_TARGETS) $(TARGETS_ALL)
 #############################################################
 $(DL_DIR) $(TOOLCHAIN_DIR) $(BUILD_DIR) $(HOST_DIR) $(BINARIES_DIR) $(STAMP_DIR):
 	@mkdir -p $@
+
+$(DINGUX_LOCAL_DIR):
+	@mkdir -p $@/apps
+	@mkdir -p $@/bin
+	@mkdir -p $@/emulators
+	@mkdir -p $@/etc
+	@mkdir -p $@/games
+	@mkdir -p $@/lib
+	@mkdir -p $@/sbin
+	@mkdir -p $@/share
 
 $(STAGING_DIR):
 	@mkdir -p $(STAGING_DIR)/bin
@@ -587,6 +600,7 @@ endif
 clean:
 	rm -rf $(STAGING_DIR) $(TARGET_DIR) $(BINARIES_DIR) $(HOST_DIR) \
 		$(STAMP_DIR) $(BUILD_DIR) $(TOOLCHAIN_DIR)
+	rm -rf $(DINGUX_LOCAL_DIR)
 
 distclean: clean
 ifeq ($(DL_DIR),$(TOPDIR)/dl)
