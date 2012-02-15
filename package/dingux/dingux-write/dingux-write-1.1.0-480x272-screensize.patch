@@ -1,0 +1,16 @@
+--- a/src/psp_sdl.h	2009-10-18 17:07:48.000000000 +0400
++++ b/src/psp_sdl.h	2012-03-12 07:44:03.285025300 +0400
+@@ -28,10 +28,10 @@
+ # define GP2X_SDL_NOP   0
+ # define GP2X_SDL_XOR   1
+ 
+-# define GP2X_SDL_SCREEN_WIDTH    320
+-# define GP2X_SDL_SCREEN_HEIGHT   240
++# define GP2X_SDL_SCREEN_WIDTH    480
++# define GP2X_SDL_SCREEN_HEIGHT   272
+ 
+-# define GP2X_LINE_SIZE  320
++# define GP2X_LINE_SIZE  480
+ # define GP2X_SDL_MAX_FONT 8
+ 
+   typedef struct psp_font_t {

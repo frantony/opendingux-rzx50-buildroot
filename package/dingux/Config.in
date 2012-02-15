@@ -1,4 +1,5 @@
 menu "Dingux"
 source "package/dingux/dingux-commander/Config.in"
+source "package/dingux/dingux-write/Config.in"
 source "package/dingux/hello/Config.in"
 endmenu

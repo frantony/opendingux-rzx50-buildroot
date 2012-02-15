@@ -1,0 +1,4 @@
+title=dng-write
+description=ASCII text editor for Dingux
+exec=/usr/local/apps/dingux-write/dingux-write.dge
+icon=/usr/local/apps/dingux-write/dingux-write.png

@@ -1,0 +1,4 @@
+config BR2_PACKAGE_DINGUX_WRITE
+       bool "Dingux Write"
+       help
+         no help
