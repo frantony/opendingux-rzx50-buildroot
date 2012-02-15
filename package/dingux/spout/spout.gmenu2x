@@ -1,0 +1,3 @@
+title=spout
+exec=/usr/local/apps/spout/spout-wrapper.dge
+icon=/usr/local/apps/spout/spout.png

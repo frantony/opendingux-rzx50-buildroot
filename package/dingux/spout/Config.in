@@ -1,0 +1,4 @@
+config BR2_PACKAGE_SPOUT
+       bool "Spout"
+       help
+         no help
