@@ -1,0 +1,35 @@
+From 8e81c00e6b3d2becbc28cd0682380c76345d0c50 Mon Sep 17 00:00:00 2001
+From: Antony Pavlov <antonynpavlov@gmail.com>
+Date: Sat, 17 Mar 2012 22:57:43 +0400
+Subject: [PATCH] add macros for default width and default height
+
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ id_vl.cpp |   10 ++++++++--
+ 1 files changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/id_vl.cpp b/id_vl.cpp
+index b8bd737..a57228d 100644
+--- a/id_vl.cpp
++++ b/id_vl.cpp
+@@ -32,9 +32,15 @@ unsigned screenBits = 8;
+ unsigned screenBits = 16;
+ #endif
+ #else
++#ifndef DEFAULT_SCREEN_HEIGHT
++#define DEFAULT_SCREEN_HEIGHT 400
++#endif
++#ifndef DEFAULT_SCREEN_WIDTH
++#define DEFAULT_SCREEN_WIDTH 640
++#endif
+ boolean usedoublebuffering = true;
+-unsigned screenWidth = 640;
+-unsigned screenHeight = 400;
++unsigned screenWidth = DEFAULT_SCREEN_WIDTH;
++unsigned screenHeight = DEFAULT_SCREEN_HEIGHT;
+ unsigned screenBits = -1;      // use "best" color depth according to libSDL
+ #endif
+ 
+-- 
+1.7.8.3
+

@@ -1,0 +1,85 @@
+diff --git a/Makefile b/Makefile
+index 75ba7a1..c318b69 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,3 @@
+-CONFIG ?= config.default
+--include $(CONFIG)
+-
+-
+ BINARY    ?= wolf3d
+ PREFIX    ?= /usr/local
+ MANPREFIX ?= $(PREFIX)
+@@ -11,33 +7,6 @@ INSTALL_PROGRAM ?= $(INSTALL) -m 555 -s
+ INSTALL_MAN     ?= $(INSTALL) -m 444
+ INSTALL_DATA    ?= $(INSTALL) -m 444
+ 
+-
+-SDL_CONFIG  ?= sdl-config
+-CFLAGS_SDL  ?= $(shell $(SDL_CONFIG) --cflags)
+-LDFLAGS_SDL ?= $(shell $(SDL_CONFIG) --libs)
+-
+-
+-CFLAGS += $(CFLAGS_SDL)
+-
+-#CFLAGS += -Wall
+-#CFLAGS += -W
+-CFLAGS += -Wpointer-arith
+-CFLAGS += -Wreturn-type
+-CFLAGS += -Wwrite-strings
+-CFLAGS += -Wcast-align
+-
+-
+-CCFLAGS += $(CFLAGS)
+-CCFLAGS += -std=gnu99
+-CCFLAGS += -Werror-implicit-function-declaration
+-CCFLAGS += -Wimplicit-int
+-CCFLAGS += -Wsequence-point
+-
+-CXXFLAGS += $(CFLAGS)
+-
+-LDFLAGS += $(LDFLAGS_SDL)
+-LDFLAGS += -lSDL_mixer
+-
+ SRCS :=
+ SRCS += fmopl.cpp
+ SRCS += id_ca.cpp
+@@ -75,13 +44,13 @@ Q ?= @
+ 
+ all: $(BINARY)
+ 
+-ifndef NO_DEPS
+-depend: $(DEPS)
+-
+-ifeq ($(findstring $(MAKECMDGOALS), clean depend Data),)
+--include $(DEPS)
+-endif
+-endif
++#ifndef NO_DEPS
++#depend: $(DEPS)
++#
++#ifeq ($(findstring $(MAKECMDGOALS), clean depend Data),)
++#-include $(DEPS)
++#endif
++#endif
+ 
+ $(BINARY): $(OBJS)
+ 	@echo '===> LD $@'
+@@ -89,7 +58,7 @@ $(BINARY): $(OBJS)
+ 
+ .c.o:
+ 	@echo '===> CC $<'
+-	$(Q)$(CC) $(CCFLAGS) -c $< -o $@
++	$(Q)$(CC) $(CFLAGS) -c $< -o $@
+ 
+ .cpp.o:
+ 	@echo '===> CXX $<'
+@@ -97,7 +66,7 @@ $(BINARY): $(OBJS)
+ 
+ .c.d:
+ 	@echo '===> DEP $<'
+-	$(Q)$(CC) $(CCFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:%.d=%.o):#' > $@
++	$(Q)$(CC) $(CFLAGS) -MM $< | sed 's#^$(@F:%.d=%.o):#$@ $(@:%.d=%.o):#' > $@
+ 
+ .cpp.d:
+ 	@echo '===> DEP $<'

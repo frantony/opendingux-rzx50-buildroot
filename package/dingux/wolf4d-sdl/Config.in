@@ -1,0 +1,5 @@
+config BR2_PACKAGE_WOLF4D_SDL
+	bool "Wolf4SDL"
+	help
+	 no help
+
