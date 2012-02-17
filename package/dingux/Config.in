@@ -1,6 +1,7 @@
 menu "Dingux"
 source "package/dingux/dingux-commander/Config.in"
 source "package/dingux/dingux-write/Config.in"
+source "package/dingux/gnuboy/Config.in"
 source "package/dingux/gpmark/Config.in"
 source "package/dingux/hello/Config.in"
 source "package/dingux/hota/Config.in"

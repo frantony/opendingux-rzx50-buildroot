@@ -1,0 +1,7 @@
+title=gnuboy
+description=GameBoy Emulator
+exec=/usr/local/apps/gnuboy/gnuboy-wrapper.dge
+icon=/usr/local/apps/gnuboy/gnuboy.png
+selectordir=/media
+selectorbrowser=true
+selectorfilter=gb,gbc

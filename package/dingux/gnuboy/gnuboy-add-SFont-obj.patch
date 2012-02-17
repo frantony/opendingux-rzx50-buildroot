@@ -1,0 +1,12 @@
+Index: Makefile.dingux
+===================================================================
+--- a/Makefile.dingux	(revision 166)
++++ b/Makefile.dingux	(working copy)
+@@ -28,6 +28,7 @@
+ SYS_INCS = -I./sys/nix
+ 
+ SDL_OBJS = sys/sdl/sdl.o sys/sdl/keymap.o # sys/sdl/scale2x/scale2x.o sys/sdl/scale2x/scale3x.o sys/sdl/scale2x/scalebit.o 
++SDL_OBJS += sys/sdl/SFont.o
+ SDL_LIBS = 
+ 
+ TARGET = gnuboy_dingux.dge

@@ -1,0 +1,12 @@
+bind space +select
+bind shift +select
+bind tab quit
+bind backspace quit
+bind up +up
+bind down +down
+bind left +left
+bind right +right
+bind ctrl +a
+bind alt +b
+bind enter +start
+unbind esc

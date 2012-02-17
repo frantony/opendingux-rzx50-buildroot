@@ -1,0 +1,5 @@
+config BR2_PACKAGE_GNUBOY
+	bool "gnuboy"
+	help
+	 no help
+
