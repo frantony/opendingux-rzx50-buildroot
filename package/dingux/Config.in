@@ -1,4 +1,5 @@
 menu "Dingux"
+source "package/dingux/color-lines-sdl/Config.in"
 source "package/dingux/dingux-commander/Config.in"
 source "package/dingux/dingux-write/Config.in"
 source "package/dingux/gnuboy/Config.in"

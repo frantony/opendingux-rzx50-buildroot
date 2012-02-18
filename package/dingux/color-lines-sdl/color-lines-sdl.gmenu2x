@@ -1,0 +1,4 @@
+title=colorlines
+description=
+exec=/usr/local/apps/color-lines-sdl/color-lines-sdl.dge
+icon=/usr/local/apps/color-lines-sdl/color-lines-sdl.png

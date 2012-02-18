@@ -1,0 +1,5 @@
+config BR2_PACKAGE_COLOR_LINES_SDL
+	bool "Color Lines SDL"
+	help
+	 no help
+
