@@ -1,0 +1,4 @@
+config BR2_PACKAGE_REMINISCENCE
+       bool "REminiscence"
+       help
+         no help

@@ -1,0 +1,4 @@
+title=reminiscence
+description=re-implementation of the game Flashback (1992)
+exec=/usr/local/apps/reminiscence/reminiscence-wrapper.dge
+icon=/usr/local/apps/reminiscence/reminiscence.png

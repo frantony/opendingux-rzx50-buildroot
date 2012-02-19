@@ -1,0 +1,26 @@
+From 4c0904942db8a4fd5cb0d0c744a1b15228b6acb2 Mon Sep 17 00:00:00 2001
+From: Antony Pavlov <antonynpavlov@gmail.com>
+Date: Sun, 18 Mar 2012 10:43:47 +0400
+Subject: [PATCH] use point1x scaler by default
+
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ systemstub_sdl.cpp |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/systemstub_sdl.cpp b/systemstub_sdl.cpp
+index 4d1a737..5b6dfa5 100644
+--- a/systemstub_sdl.cpp
++++ b/systemstub_sdl.cpp
+@@ -88,7 +88,7 @@ void SystemStub_SDL::init(const char *title, int w, int h) {
+ 	_fadeScreenBuffer = 0;
+ 	_fadeOnUpdateScreen = false;
+ 	_fullscreen = false;
+-	_currentScaler = 2;
++	_currentScaler = 0;
+ 	memset(_pal, 0, sizeof(_pal));
+ 	prepareGfxMode();
+ 	_joystick = NULL;
+-- 
+1.7.7.3
+
