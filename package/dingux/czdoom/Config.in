@@ -1,0 +1,4 @@
+config BR2_PACKAGE_CZDOOM
+       bool "czdoom"
+       help
+         no help

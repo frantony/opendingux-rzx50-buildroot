@@ -1,0 +1,4 @@
+title=czdoom
+description=
+exec=/usr/local/apps/czdoom/czdoom.dge
+icon=/usr/local/apps/czdoom/czdoom.png

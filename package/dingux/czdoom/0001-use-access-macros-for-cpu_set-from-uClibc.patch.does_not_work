@@ -1,0 +1,25 @@
+From d0c3f6b871869c7974ef02edb6ad1c9535d266e1 Mon Sep 17 00:00:00 2001
+From: Antony Pavlov <antonynpavlov@gmail.com>
+Date: Tue, 21 Feb 2012 10:34:58 +0400
+Subject: [PATCH] use access macros for cpu_set from uClibc
+
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ src/SDL/i_system.c |    1 +
+ 1 files changed, 1 insertions(+), 0 deletions(-)
+
+diff --git a/src/SDL/i_system.c b/src/SDL/i_system.c
+index 8a60258..36a3a25 100644
+--- a/src/SDL/i_system.c
++++ b/src/SDL/i_system.c
+@@ -64,6 +64,7 @@
+ #include <unistd.h>
+ #endif
+ #ifdef HAVE_SCHED_H
++#define __UCLIBC_LINUX_SPECIFIC__
+ #include <sched.h>
+ #endif
+ #ifdef _MSC_VER
+-- 
+1.7.8.3
+
