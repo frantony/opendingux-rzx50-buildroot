@@ -1,0 +1,4 @@
+config BR2_PACKAGE_FCEU320
+	bool "FCEU320 NES emulator"
+	help
+	 no help

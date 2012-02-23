@@ -1,0 +1,31 @@
+#############################################################
+#
+#
+#
+#############################################################
+FCEU320_SITE =
+FCEU320_SITE_METHOD =
+FCEU320_VERSION = 0.3OD
+FCEU320_SOURCE = fceu320_$(FCEU320_VERSION).tar.gz
+FCEU320_DEPENDENCIES = sdl sdl_gfx sdl_ttf sdl_image libao
+
+# dirty hack
+FCEU320_PACKAGE_DIR = $(DINGUX_PACKAGE_DIR)/fceu320
+FCEU320_LOCAL_DIR = $(DINGUX_LOCAL_APPS_DIR)/fceu320
+
+define FCEU320_BUILD_CMDS
+	$(MAKE) CC="$(TARGET_CC)" CXX="$(TARGET_CXX)" LD="$(TARGET_CC)" CFLAGS="-I $(STAGING_DIR)/usr/include/SDL $(TARGET_CFLAGS)" CXXFLAGS="-DDINGUX -I $(@D)/src -DA320_HARDWARE -DLSB_FIRST -DPSS_STYLE=1 -DHAVE_ASPRINTF -DUSE_ZSNES_FONT -DFRAMESKIP -DFRACTIONAL_FRAMESKIP -D_REENTRANT -DSHOWFPS -I $(STAGING_DIR)/usr/include $(TARGET_CXXFLAGS)" LDFLAGS="-L $(STAGING_DIR)/usr/lib $(TARGET_LDFLAGS) -lSDL -lSDL_image -lSDL_ttf -lSDLmain -lSDL_mixer" -C "$(@D)"
+endef
+
+define FCEU320_INSTALL_TARGET_CMDS
+	$(RM) -rf $(FCEU320_LOCAL_DIR)
+	mkdir -p $(FCEU320_LOCAL_DIR)
+	$(INSTALL) -D -m 0755 $(@D)/fceu320.od $(FCEU320_LOCAL_DIR)/fceu320.dge
+	$(INSTALL) -D -m 0644 $(FCEU320_PACKAGE_DIR)/fceu320.png $(FCEU320_LOCAL_DIR)
+	$(INSTALL) -D -m 0755 $(FCEU320_PACKAGE_DIR)/fceu320-wrapper.dge $(FCEU320_LOCAL_DIR)
+
+	mkdir -p $(GMENU2X_EMULATORS_SECTION)
+	$(INSTALL) -D -m 0644 $(FCEU320_PACKAGE_DIR)/fceu320.gmenu2x $(GMENU2X_EMULATORS_SECTION)/fceu320
+endef
+
+$(eval $(call GENTARGETS,package/dingux,fceu320))

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rzx50_lcd_mode --a320
+dd if=/dev/zero of=/dev/fb0 bs=1M
+./fceu320.dge "$1"
+rzx50_lcd_mode --normal

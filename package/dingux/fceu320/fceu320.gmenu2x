@@ -1,0 +1,7 @@
+title=fceu320
+description=NES Emulator
+exec=/usr/local/apps/fceu320/fceu320-wrapper.dge
+icon=/usr/local/apps/fceu320/fceu320.png
+selectordir=/media
+selectorbrowser=true
+selectorfilter=nes
