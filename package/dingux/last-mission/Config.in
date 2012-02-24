@@ -1,0 +1,4 @@
+config BR2_PACKAGE_LAST_MISSION
+	bool "the last mission"
+	help
+	 no help
