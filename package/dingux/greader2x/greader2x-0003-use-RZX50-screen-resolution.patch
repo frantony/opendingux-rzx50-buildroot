@@ -1,0 +1,29 @@
+From 57e1259d24a0bf814159cb338034909d35d7e5f7 Mon Sep 17 00:00:00 2001
+From: Dmitry Smaghin <exmortis@yandex.ru>
+Date: Sat, 3 Mar 2012 18:04:22 +0400
+Subject: [PATCH 3/3] use RZX50 screen resolution
+
+Signed-off-by: Dmitry Smaghin <exmortis@yandex.ru>
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ screen.h |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/screen.h b/screen.h
+index 688c911..bfaa962 100644
+--- a/screen.h
++++ b/screen.h
+@@ -28,8 +28,8 @@
+ #include <math.h>
+ #include "joystick.h"
+ 
+-#define GREADER2X_X_RESOLUTION 320
+-#define GREADER2X_Y_RESOLUTION 240
++#define GREADER2X_X_RESOLUTION 480
++#define GREADER2X_Y_RESOLUTION 272
+ 
+ using std::string;
+ 
+-- 
+1.7.8.3
+

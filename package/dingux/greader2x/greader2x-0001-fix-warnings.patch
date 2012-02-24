@@ -1,0 +1,137 @@
+From 0813e78acbbb57c901acb6846cbc031504d33df1 Mon Sep 17 00:00:00 2001
+From: Dmitry Smaghin <exmortis@yandex.ru>
+Date: Sat, 3 Mar 2012 18:04:01 +0400
+Subject: [PATCH 1/3] fix warnings
+
+Signed-off-by: Dmitry Smaghin <exmortis@yandex.ru>
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ GetDir.cpp        |    4 ++--
+ contrib/unzip.cpp |   10 ++++++++++
+ joystick.cpp      |    2 +-
+ player.cpp        |    2 +-
+ utils.cpp         |    2 +-
+ 5 files changed, 15 insertions(+), 5 deletions(-)
+
+diff --git a/GetDir.cpp b/GetDir.cpp
+index 44b00ee..0c587d7 100644
+--- a/GetDir.cpp
++++ b/GetDir.cpp
+@@ -167,7 +167,7 @@ int GetDir::Show(string& str, bool path) {
+   int numfiles = files.size();
+   string curdir = str;
+   int topitem = 1;
+-  int maxitems;
++  int maxitems = 0;
+   int done = 999;
+   int retval = 0;
+   bool redraw = true;
+@@ -290,7 +290,7 @@ int GetDir::showDirs(string& str) {
+   int numfiles = files.size();
+   string curdir = str;
+   int topitem = 1;
+-  int maxitems;
++  int maxitems = 0;
+   int done = 999;
+   int retval = 0;
+   bool redraw = true;
+diff --git a/contrib/unzip.cpp b/contrib/unzip.cpp
+index 5c65616..29f68e8 100644
+--- a/contrib/unzip.cpp
++++ b/contrib/unzip.cpp
+@@ -562,10 +562,12 @@ local int unzlocal_GetCurrentFileInfoInternal (unzFile file, unz_file_info *pfil
+ 
+     /* we check the magic */
+     if (err==UNZ_OK)
++    {
+         if (unzlocal_getLong(&s->z_filefunc, s->filestream,&uMagic) != UNZ_OK)
+             err=UNZ_ERRNO;
+         else if (uMagic!=0x02014b50)
+             err=UNZ_BADZIPFILE;
++    }
+ 
+     if (unzlocal_getShort(&s->z_filefunc, s->filestream,&file_info.version) != UNZ_OK)
+         err=UNZ_ERRNO;
+@@ -642,10 +644,13 @@ local int unzlocal_GetCurrentFileInfoInternal (unzFile file, unz_file_info *pfil
+             uSizeRead = extraFieldBufferSize;
+ 
+         if (lSeek!=0)
++        {
+             if (ZSEEK(s->z_filefunc, s->filestream,lSeek,ZLIB_FILEFUNC_SEEK_CUR)==0)
+                 lSeek=0;
+             else
+                 err=UNZ_ERRNO;
++        }
++
+         if ((file_info.size_file_extra>0) && (extraFieldBufferSize>0))
+             if (ZREAD(s->z_filefunc, s->filestream,extraField,uSizeRead)!=uSizeRead)
+                 err=UNZ_ERRNO;
+@@ -667,10 +672,13 @@ local int unzlocal_GetCurrentFileInfoInternal (unzFile file, unz_file_info *pfil
+             uSizeRead = commentBufferSize;
+ 
+         if (lSeek!=0)
++        {
+             if (ZSEEK(s->z_filefunc, s->filestream,lSeek,ZLIB_FILEFUNC_SEEK_CUR)==0)
+                 lSeek=0;
+             else
+                 err=UNZ_ERRNO;
++        }
++
+         if ((file_info.size_file_comment>0) && (commentBufferSize>0))
+             if (ZREAD(s->z_filefunc, s->filestream,szComment,uSizeRead)!=uSizeRead)
+                 err=UNZ_ERRNO;
+@@ -902,10 +910,12 @@ local int unzlocal_CheckCurrentFileCoherencyHeader (unz_s* s, uInt* piSizeVar,
+ 
+ 
+     if (err==UNZ_OK)
++    {
+         if (unzlocal_getLong(&s->z_filefunc, s->filestream,&uMagic) != UNZ_OK)
+             err=UNZ_ERRNO;
+         else if (uMagic!=0x04034b50)
+             err=UNZ_BADZIPFILE;
++    }
+ 
+     if (unzlocal_getShort(&s->z_filefunc, s->filestream,&uData) != UNZ_OK)
+         err=UNZ_ERRNO;
+diff --git a/joystick.cpp b/joystick.cpp
+index 8420f88..6b889db 100644
+--- a/joystick.cpp
++++ b/joystick.cpp
+@@ -185,7 +185,7 @@ bool Joystick::isKey(int key[3][2]) {
+   int tick = SDL_GetTicks();
+   for (int i = 0; i < 3; i++) {
+     if (buttons[key[i][0]]) {
+-      if (key[i][1] == 19 && numpressed == 1 || buttons[key[i][1]]) {
++      if ((key[i][1] == 19 && numpressed == 1) || buttons[key[i][1]]) {
+         if (tick-pressed[key[i][0]]>interval[key[i][0]]) {
+           pressed[key[i][0]] = tick;
+           if (interval[key[i][0]] == 0) {
+diff --git a/player.cpp b/player.cpp
+index edd3d2a..a39bef6 100644
+--- a/player.cpp
++++ b/player.cpp
+@@ -128,7 +128,7 @@ void TPlayer::changeVolume(int vol) {
+   if (volume < 0) volume = 0;
+  // Mix_VolumeMusic(volume);
+  // Add by vimrc, from Dmenu by leo.5xl.bigfat
+-  char *mixer_device = "/dev/mixer";
++  const char *mixer_device = "/dev/mixer";
+   int mixer;
+   int oss_volume = volume | (volume << 8); // set volume for both channels
+   mixer = open(mixer_device, O_WRONLY);
+diff --git a/utils.cpp b/utils.cpp
+index 3cf914a..9928e2d 100644
+--- a/utils.cpp
++++ b/utils.cpp
+@@ -293,7 +293,7 @@ string bidify(string str) {
+   indx = 0;
+ 
+   //mystr = str;
+-  int pos;
++  unsigned int pos;
+   pos = str.find(" ",indx);
+   while (pos != string::npos) {
+     word = str.substr(indx,pos-indx);
+-- 
+1.7.8.3
+

@@ -1,0 +1,4 @@
+title=greader2x
+description=no description
+exec=/usr/local/apps/greader2x/greader2x.dge
+icon=/usr/local/apps/greader2x/greader2x.png

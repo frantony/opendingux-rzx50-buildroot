@@ -1,0 +1,4 @@
+config BR2_PACKAGE_GREADER2X
+	bool "greader2x"
+	help
+	 no help
