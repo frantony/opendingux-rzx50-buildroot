@@ -1,0 +1,31 @@
+#############################################################
+#
+#
+#
+#############################################################
+SNES9X_SITE =
+SNES9X_SITE_METHOD =
+SNES9X_VERSION = 20110923
+SNES9X_SOURCE = snes9x_$(SNES9X_VERSION).tar.gz
+SNES9X_DEPENDENCIES = zlib sdl libao
+
+# dirty hack
+SNES9X_PACKAGE_DIR = $(DINGUX_PACKAGE_DIR)/snes9x
+SNES9X_LOCAL_DIR = $(DINGUX_LOCAL_APPS_DIR)/snes9x
+
+define SNES9X_BUILD_CMDS
+	$(MAKE) CC="$(TARGET_CC)" CCC="$(TARGET_CXX)" LD="$(TARGET_CC)" CFLAGS="-I $(STAGING_DIR)/usr/include/SDL $(TARGET_CFLAGS)" CXXFLAGS="-DDINGUX -I $(@D)/src -DA320_HARDWARE -DLSB_FIRST -DPSS_STYLE=1 -DHAVE_ASPRINTF -DUSE_ZSNES_FONT -DFRAMESKIP -DFRACTIONAL_FRAMESKIP -D_REENTRANT -DSHOWFPS -I $(STAGING_DIR)/usr/include $(TARGET_CXXFLAGS)" LDFLAGS="-L $(STAGING_DIR)/usr/lib $(TARGET_LDFLAGS)" -C "$(@D)"
+endef
+
+define SNES9X_INSTALL_TARGET_CMDS
+	$(RM) -rf $(SNES9X_LOCAL_DIR)
+	mkdir -p $(SNES9X_LOCAL_DIR)
+	$(INSTALL) -D -m 0755 $(@D)/snes9x $(SNES9X_LOCAL_DIR)/snes9x.dge
+	$(INSTALL) -D -m 0644 $(SNES9X_PACKAGE_DIR)/snes9x.png $(SNES9X_LOCAL_DIR)
+	$(INSTALL) -D -m 0755 $(SNES9X_PACKAGE_DIR)/snes9x-wrapper.dge $(SNES9X_LOCAL_DIR)
+
+	mkdir -p $(GMENU2X_EMULATORS_SECTION)
+	$(INSTALL) -D -m 0644 $(SNES9X_PACKAGE_DIR)/snes9x.gmenu2x $(GMENU2X_EMULATORS_SECTION)/snes9x
+endef
+
+$(eval $(call GENTARGETS,package/dingux,snes9x))

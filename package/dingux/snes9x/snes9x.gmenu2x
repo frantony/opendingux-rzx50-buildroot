@@ -1,0 +1,7 @@
+title=snes9x
+description=Super Nintendo Emulator
+exec=/usr/local/apps/snes9x/snes9x-wrapper.dge
+icon=/usr/local/apps/snes9x/snes9x.png
+selectordir=/media
+selectorbrowser=true
+selectorfilter=smc,sfc
