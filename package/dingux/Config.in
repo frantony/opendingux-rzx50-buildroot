@@ -1,6 +1,7 @@
 menu "Dingux"
 source "package/dingux/color-lines-sdl/Config.in"
 source "package/dingux/czdoom/Config.in"
+source "package/dingux/digger/Config.in"
 source "package/dingux/dingux-commander/Config.in"
 source "package/dingux/dingux-write/Config.in"
 source "package/dingux/fceu320/Config.in"

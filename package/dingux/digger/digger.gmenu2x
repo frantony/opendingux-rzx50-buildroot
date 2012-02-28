@@ -1,0 +1,4 @@
+title=digger
+description=
+exec=/usr/local/apps/digger/digger-wrapper.dge
+icon=/usr/local/apps/digger/digger.png
