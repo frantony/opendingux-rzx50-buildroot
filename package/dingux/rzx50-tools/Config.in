@@ -1,0 +1,4 @@
+config BR2_PACKAGE_RZX50_TOOLS
+	bool "rzx50-tools"
+	help
+	 no help
