@@ -1,0 +1,4 @@
+config BR2_PACKAGE_GMU
+	bool "sound player"
+	help
+	 no help

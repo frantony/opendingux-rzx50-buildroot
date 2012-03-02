@@ -1,0 +1,4 @@
+title=gmu
+description=no description
+exec=/usr/local/apps/gmu/gmu-wrapper.dge
+icon=/usr/local/apps/gmu/gmu.png
