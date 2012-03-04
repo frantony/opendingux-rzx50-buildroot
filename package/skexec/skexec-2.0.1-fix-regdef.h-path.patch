@@ -1,0 +1,28 @@
+From 26dc6ee42fa9b36f20a94aec72c0caae2180236b Mon Sep 17 00:00:00 2001
+From: Antony Pavlov <antonynpavlov@gmail.com>
+Date: Wed, 22 Feb 2012 08:21:43 +0400
+Subject: [PATCH] fix regdef.h path
+
+FIXME: it's better to add -I option for gcc
+
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ kexec/arch/mips/mips-setup-simple.S |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/kexec/arch/mips/mips-setup-simple.S b/kexec/arch/mips/mips-setup-simple.S
+index 1acdee3..5b08eb2 100644
+--- a/kexec/arch/mips/mips-setup-simple.S
++++ b/kexec/arch/mips/mips-setup-simple.S
+@@ -14,7 +14,7 @@
+  * Only suitable for platforms booting with MMU turned off.
+  * -- Albert Herranz
+  */
+-#include "regdef.h"
++#include "sys/regdef.h"
+ 
+ /* returns  t0 = relocated address of sym */
+ /* modifies t1 t2 */
+-- 
+1.7.8.3
+

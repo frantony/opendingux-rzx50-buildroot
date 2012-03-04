@@ -21,6 +21,7 @@ endmenu
 
 menu "Debugging, profiling and benchmark"
 source "package/dmalloc/Config.in"
+source "package/skexec/Config.in"
 source "package/kexec/Config.in"
 source "package/lmbench/Config.in"
 source "package/lsof/Config.in"
