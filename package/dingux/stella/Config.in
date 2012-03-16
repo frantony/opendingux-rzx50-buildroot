@@ -1,0 +1,4 @@
+config BR2_PACKAGE_STELLA
+       bool "Stella Atari 2600 Emulator"
+       help
+         no help

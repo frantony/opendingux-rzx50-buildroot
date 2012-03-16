@@ -1,0 +1,7 @@
+title=stella
+description=Atari 2600 Emulator
+exec=/usr/local/apps/stella/stella.dge
+icon=/usr/local/apps/stella/stella.png
+selectordir=/media
+selectorbrowser=true
+selectorfilter=a26,bin
