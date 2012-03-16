@@ -1,0 +1,6 @@
+title=viewimage
+exec=/usr/local/apps/viewimage/viewimage-wrapper.dge
+icon=/usr/local/apps/viewimage/viewimage.png
+selectordir=/media
+selectorbrowser=true
+selectorfilter=png,jpg,jpeg

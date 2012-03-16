@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rzx50_lcd_mode --a320
+dd if=/dev/zero of=/dev/fb0 bs=1M
+./viewimage.dge $1 /usr/local/apps/viewimage/viewimage.png
+rzx50_lcd_mode --normal

@@ -20,5 +20,6 @@ source "package/dingux/last-mission/Config.in"
 source "package/dingux/reminiscence/Config.in"
 source "package/dingux/snes9x/Config.in"
 source "package/dingux/spout/Config.in"
+source "package/dingux/viewimage/Config.in"
 source "package/dingux/wolf4d-sdl/Config.in"
 endmenu
