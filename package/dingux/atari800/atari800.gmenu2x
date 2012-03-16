@@ -1,0 +1,7 @@
+title=Dingux 800
+icon=skin:icons/emulators/stella.png
+exec=/usr/local/emulators/dingux-atari/dingux-atari
+manual=/help/local/emulators/dingux-atari/help.txt
+clock=336
+gamma=100
+backlight=100

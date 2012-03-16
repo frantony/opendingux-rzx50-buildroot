@@ -3,6 +3,7 @@ menu "Dingux"
 source "package/dingux/rzx50-tools/Config.in"
 source "package/dingux/gmenu2x/Config.in"
 
+source "package/dingux/atari800/Config.in"
 source "package/dingux/color-lines-sdl/Config.in"
 source "package/dingux/czdoom/Config.in"
 source "package/dingux/digger/Config.in"
