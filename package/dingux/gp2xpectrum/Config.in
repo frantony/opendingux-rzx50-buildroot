@@ -1,0 +1,4 @@
+config BR2_PACKAGE_GP2XPECTRUM
+	bool "ZX Spectrum emulator"
+	help
+	 no help
