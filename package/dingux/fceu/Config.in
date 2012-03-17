@@ -1,0 +1,4 @@
+config BR2_PACKAGE_FCEU
+	bool "FCEU NES emulator"
+	help
+	 no help
