@@ -1,0 +1,4 @@
+title=unrealspeccyp
+description=Unreal Speccy Portable (ZX-Spectrum emulator)
+exec=/usr/local/apps/unrealspeccyp/unrealspeccyp-wrapper.dge
+icon=/usr/local/apps/unrealspeccyp/unrealspeccyp.png
