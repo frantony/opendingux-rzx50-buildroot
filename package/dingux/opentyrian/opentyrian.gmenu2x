@@ -1,0 +1,4 @@
+title=opentyrian
+description=A port of the DOS shoot-em-up TyriaN
+exec=/usr/local/apps/opentyrian/opentyrian-wrapper.dge
+icon=/usr/local/apps/opentyrian/opentyrian.png

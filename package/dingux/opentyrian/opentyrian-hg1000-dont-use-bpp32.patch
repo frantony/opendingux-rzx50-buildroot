@@ -1,0 +1,12 @@
+diff -r 628c01aadaa7 src/video.c
+--- a/src/video.c	Fri Feb 24 05:08:17 2012 -0200
++++ b/src/video.c	Tue Mar 20 21:49:04 2012 +0400
+@@ -70,7 +70,7 @@
+ 	int flags = SDL_SWSURFACE | SDL_HWPALETTE | (fullscreen ? SDL_FULLSCREEN : 0);
+ 	
+ 	// test each bitdepth
+-	for (uint bpp = 32; bpp > 0; bpp -= 8)
++	for (uint bpp = 16; bpp > 0; bpp -= 8)
+ 	{
+ 		uint temp_bpp = SDL_VideoModeOK(w, h, bpp, flags);
+ 		

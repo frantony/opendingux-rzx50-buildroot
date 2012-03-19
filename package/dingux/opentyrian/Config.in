@@ -1,0 +1,4 @@
+config BR2_PACKAGE_OPENTYRIAN
+	bool "opentyrian"
+	help
+	 no help
