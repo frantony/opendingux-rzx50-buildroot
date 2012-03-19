@@ -1,0 +1,4 @@
+title=vorton
+description=
+exec=/usr/local/apps/vorton/vorton-wrapper.dge
+icon=/usr/local/apps/vorton/vorton.png

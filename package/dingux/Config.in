@@ -27,5 +27,6 @@ source "package/dingux/spout/Config.in"
 source "package/dingux/stella/Config.in"
 source "package/dingux/unrealspeccyp/Config.in"
 source "package/dingux/viewimage/Config.in"
+source "package/dingux/vorton/Config.in"
 source "package/dingux/wolf4d-sdl/Config.in"
 endmenu

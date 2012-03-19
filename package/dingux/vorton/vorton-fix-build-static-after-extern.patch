@@ -1,0 +1,26 @@
+From b26361d26abf6c4e7f773c457f692e2e26b61533 Mon Sep 17 00:00:00 2001
+From: Antony Pavlov <antonynpavlov@gmail.com>
+Date: Mon, 19 Mar 2012 22:35:47 +0400
+Subject: [PATCH] fix build: static after extern
+
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ src/error.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/error.c b/src/error.c
+index 987503e..c6bb44a 100644
+--- a/src/error.c
++++ b/src/error.c
+@@ -4,7 +4,7 @@
+ 
+ static SDL_Surface *font_surface;
+ 
+-static SFont_FontInfo font;
++SFont_FontInfo font;
+ 
+ #define putstring(X,Y,Str) (SFont_PutStringInfo(screen,&font,X,Y,Str))
+ 
+-- 
+1.7.9.1
+
