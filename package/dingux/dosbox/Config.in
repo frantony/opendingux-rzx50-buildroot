@@ -1,0 +1,4 @@
+config BR2_PACKAGE_DOSBOX
+	bool "DOSBOX emulator"
+	help
+	 no help
