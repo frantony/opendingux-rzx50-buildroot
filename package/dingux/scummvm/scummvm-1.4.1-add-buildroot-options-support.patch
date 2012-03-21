@@ -1,0 +1,50 @@
+From 900102c1715e1440621e8918ea2609b5090c7d52 Mon Sep 17 00:00:00 2001
+From: Antony Pavlov <antonynpavlov@gmail.com>
+Date: Wed, 21 Mar 2012 17:26:54 +0400
+Subject: [PATCH] add buildroot options support
+
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ configure |   19 +++++++++++++++++++
+ 1 files changed, 19 insertions(+), 0 deletions(-)
+
+diff --git a/configure b/configure
+index d5f489d..2f1478b 100755
+--- a/configure
++++ b/configure
+@@ -1048,6 +1048,9 @@ for ac_option in $@; do
+ 	--with-staticlib-prefix=*)
+ 		_staticlibpath=`echo $ac_option | cut -d '=' -f 2`
+ 		;;
++	--build=* | --target=* | --sysconfdir=* | --disable-gtk-doc | --disable-nls | --disable-ipv6)
++		echo "option skipped"
++		;;
+ 	--host=*)
+ 		_host=`echo $ac_option | cut -d '=' -f 2`
+ 		;;
+@@ -1302,6 +1305,22 @@ else
+ 	_windres=$_host_alias-windres
+ fi
+ 
++if test ! -z "$RANLIB"; then
++	_ranlib="$RANLIB"
++fi
++
++if test ! -z "$STRIP"; then
++	_strip="$STRIP"
++fi
++
++if test ! -z "$AR"; then
++	_ar="$AR cru"
++fi
++
++if test ! -z "$AS"; then
++	_as="$AS"
++fi
++
+ #
+ # Determine extra build flags for debug and/or release builds
+ #
+-- 
+1.7.7.3
+

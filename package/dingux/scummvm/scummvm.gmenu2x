@@ -1,0 +1,4 @@
+title=scummvm
+description=a cross-platform interpreter for several point-and-click adventure engines
+exec=/usr/local/apps/scummvm/scummvm-wrapper.dge
+icon=/usr/local/apps/scummvm/scummvm.png

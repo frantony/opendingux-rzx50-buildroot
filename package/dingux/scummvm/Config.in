@@ -1,0 +1,4 @@
+config BR2_PACKAGE_SCUMMVM
+       bool "scummvm"
+       help
+         no help
