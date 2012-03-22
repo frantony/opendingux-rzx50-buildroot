@@ -1,0 +1,4 @@
+config BR2_PACKAGE_WORMUX
+       bool "wormux"
+       help
+         no help
