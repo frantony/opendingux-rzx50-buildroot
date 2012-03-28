@@ -1,0 +1,4 @@
+config BR2_PACKAGE_ARKANOID
+	bool "arkanoid"
+	help
+	 no help

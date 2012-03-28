@@ -1,0 +1,4 @@
+title=arkanoid
+description=
+exec=/usr/local/apps/arkanoid/arkanoid-wrapper.dge
+icon=/usr/local/apps/arkanoid/arkanoid.png
