@@ -1,0 +1,4 @@
+config BR2_PACKAGE_PROFADELUXE
+	bool "profanation deluxe"
+	help
+	 no help

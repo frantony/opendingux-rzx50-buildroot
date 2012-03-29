@@ -1,0 +1,36 @@
+From 460267d71b1dc440069df5e108e85d2bdb8bc770 Mon Sep 17 00:00:00 2001
+From: Antony Pavlov <antonynpavlov@gmail.com>
+Date: Thu, 29 Mar 2012 23:28:00 +0400
+Subject: [PATCH] fix input keys
+
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ src/main/profanation.cpp |    8 ++++----
+ 1 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/main/profanation.cpp b/src/main/profanation.cpp
+index 8b745b9..fa8f6eb 100644
+--- a/src/main/profanation.cpp
++++ b/src/main/profanation.cpp
+@@ -181,14 +181,14 @@ TProfanationGame::~TProfanationGame()
+         inputController.setStatus(GKEY_UP,   KeyState[SDLK_UP]);
+         inputController.setStatus(GKEY_DOWN, KeyState[SDLK_DOWN]);
+     
+-        inputController.setStatus(GKEY_LONG_JUMP, KeyState[SDLK_UP]);
+-        inputController.setStatus(GKEY_SHORT_JUMP,KeyState[SDLK_DOWN]);
++        inputController.setStatus(GKEY_LONG_JUMP, KeyState[SDLK_LCTRL]);
++        inputController.setStatus(GKEY_SHORT_JUMP,KeyState[SDLK_LALT]);
+     
+         inputController.setStatus(GKEY_SELECT,KeyState[SDLK_RETURN]);
+         inputController.setStatus(GKEY_ABORT,KeyState[SDLK_ESCAPE]);
+ 
+-        inputController.setStatus(GKEY_VOLUME_UP,KeyState[SDLK_PAGEUP]);
+-        inputController.setStatus(GKEY_VOLUME_DOWN,KeyState[SDLK_PAGEDOWN]);
++        inputController.setStatus(GKEY_VOLUME_UP,KeyState[SDLK_TAB]);
++        inputController.setStatus(GKEY_VOLUME_DOWN,KeyState[SDLK_BACKSPACE]);
+ 
+         inputController.setStatus(GKEY_SCR_PLUS,KeyState[SDLK_KP_PLUS]);
+         inputController.setStatus(GKEY_SCR_MINUS,KeyState[SDLK_KP_MINUS]);
+-- 
+1.7.9.1
+

@@ -1,0 +1,4 @@
+title=profadeluxe
+description=
+exec=/usr/local/apps/profadeluxe/profadeluxe-wrapper.dge
+icon=/usr/local/apps/profadeluxe/profadeluxe.png

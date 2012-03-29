@@ -1,0 +1,57 @@
+From 307440461969028dd4ed258d47736511e266bce2 Mon Sep 17 00:00:00 2001
+From: Antony Pavlov <antonynpavlov@gmail.com>
+Date: Thu, 29 Mar 2012 12:06:16 +0400
+Subject: [PATCH] remove TMAString::numToStr method
+
+The method TMAString::numToStr uses obsolete fcvt() function.
+This brokes the build.
+
+But as method TMAString::numToStr is unused removing it makes
+build work again.
+
+Signed-off-by: Antony Pavlov <antonynpavlov@gmail.com>
+---
+ src/ma-sdl/utils/tmastring.cpp |    7 +------
+ src/ma-sdl/utils/utils.h       |    1 -
+ 2 files changed, 1 insertions(+), 7 deletions(-)
+
+diff --git a/src/ma-sdl/utils/tmastring.cpp b/src/ma-sdl/utils/tmastring.cpp
+index f431f38..16bc3ca 100644
+--- a/src/ma-sdl/utils/tmastring.cpp
++++ b/src/ma-sdl/utils/tmastring.cpp
+@@ -4,6 +4,7 @@
+ #include "utils.h"
+ #include <string.h>
+ #include <ctype.h>
++#include <stdio.h>
+ 
+ REGISTER_CLASS_ID(TMAString);
+ 
+@@ -109,12 +110,6 @@ TMAString TMAString::trim(void)
+     return mid(begin,(end-begin+1));
+ }
+ 
+-TMAString TMAString::numToStr(long num,int ndig)
+-{
+-    int dec, sign;
+-    return TMAString(fcvt(num, ndig, &dec, &sign));
+-}
+-
+ const long TMAString::intValue(void)
+ {
+     return atol(Dato);
+diff --git a/src/ma-sdl/utils/utils.h b/src/ma-sdl/utils/utils.h
+index 7326717..35746c2 100644
+--- a/src/ma-sdl/utils/utils.h
++++ b/src/ma-sdl/utils/utils.h
+@@ -157,7 +157,6 @@ class TMAString:public TMAObject
+         
+         const int length(void) {return size;};
+         const int findStr(TMAString& Sub);
+-        TMAString numToStr(long num,int ndig);
+         const long intValue(void);
+         TMAString toUpperCase(void);
+         TMAString toLowerCase(void);
+-- 
+1.7.9.1
+
