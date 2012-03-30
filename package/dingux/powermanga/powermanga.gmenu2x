@@ -1,0 +1,4 @@
+title=powermanga
+description=
+exec=/usr/local/apps/powermanga/powermanga-wrapper.dge
+icon=/usr/local/apps/powermanga/powermanga.png
